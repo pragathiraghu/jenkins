@@ -1,0 +1,53 @@
+What is an Agent in Jenkins Pipeline?
+An agent in Jenkins Pipeline specifies where the pipeline or specific stages of the pipeline should run. It defines the execution environment for the pipeline (e.g., a particular node, a Docker container, or any available node in the Jenkins cluster).
+
+Why is an Agent Used?
+Agents allow you to:
+
+Distribute builds across multiple machines or environments.
+Use specific environments for specific tasks (e.g., running tests in a Docker container).
+Optimize resource utilization in a Jenkins cluster.
+Scenarios Where Agents are Used
+Scenario 1: Distributed Builds
+You have multiple Jenkins nodes: one for building Java code and another for running Selenium tests. Using an agent, you can define which node runs which stage.
+
+pipeline {
+    agent any  // Any available agent will execute the pipeline
+    stages {
+        stage('Build') {
+            agent { label 'java-builder' }  // Run only on the node labeled 'java-builder'
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        stage('Test') {
+            agent { label 'selenium-tester' }  // Run only on the node labeled 'selenium-tester'
+            steps {
+                sh 'mvn test'
+            }
+        }
+    }
+}
+
+Scenario 2: Running in a Docker Container
+You want to run a build process inside a Docker container that has specific dependencies.
+
+pipeline {
+    agent {
+        docker {
+            image 'node:14'  // Use Node.js Docker image
+        }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+                sh 'npm run build'
+            }
+        }
+    }
+}
+How to Answer in an Interview?
+Short and Crisp Answer: "An agent in Jenkins defines the execution environment for a pipeline or its stages. 
+It allows flexibility to run tasks on specific nodes, in Docker containers, or any available machine. For example, in a CI/CD pipeline, 
+I can run the build stage on a node with Maven and the test stage on a node with Selenium."
