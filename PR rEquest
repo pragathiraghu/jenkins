@@ -1,0 +1,45 @@
+In **Jenkins**, a **PR (Pull Request)** refers to the integration of Jenkins with a version control platform like GitHub, GitLab, or Bitbucket to automate the process of testing, building, and deploying code changes proposed through pull requests.
+
+When a pull request is created or updated in a version control system, Jenkins can automatically detect this event (using webhooks) and trigger jobs to:
+
+1. **Validate the Code**:
+   - Jenkins runs tests or builds to verify the proposed changes do not break the existing codebase.
+   
+2. **Static Code Analysis**:
+   - Jenkins can integrate with tools like SonarQube to check for code quality issues in the PR.
+
+3. **Feedback on PR**:
+   - Jenkins posts build and test results back to the pull request on the version control platform.
+   - Developers can view whether the tests passed, failed, or need improvement directly on the PR page.
+
+4. **Integration Checks**:
+   - Ensures the changes in the PR are compatible with the existing code in the target branch.
+
+### How PRs Work in Jenkins:
+1. **Webhook Integration**:
+   - A webhook is set up in GitHub, GitLab, or Bitbucket to notify Jenkins when a pull request is created, updated, or merged.
+
+2. **Multibranch Pipeline**:
+   - Jenkins uses a **Multibranch Pipeline** or a plugin like **GitHub Branch Source Plugin** to detect and create jobs for pull requests automatically.
+   - Each PR gets its own pipeline to run the defined CI/CD steps.
+
+3. **PR-Specific Behavior**:
+   - Jenkins can be configured to:
+     - Use the branch created for the PR.
+     - Merge the PR branch with the target branch temporarily for testing.
+   - Run tests or deployments in isolation to ensure reliability.
+
+4. **Feedback Loop**:
+   - Jenkins updates the status of the pull request (e.g., checks passed or failed) in the version control platform, providing a seamless feedback loop.
+
+### Example Use Case
+1. A developer opens a pull request in GitHub to merge changes into the `main` branch.
+2. Jenkins detects the pull request via webhook and triggers a job.
+3. The job:
+   - Fetches the PR branch.
+   - Runs the pipeline defined in the `Jenkinsfile` (e.g., build, test, analyze).
+4. Results are posted back to the PR (e.g., "Build Passed" or "Test Failed").
+5. The PR is merged only if all checks pass.
+
+### Summary for Interview
+*"In Jenkins, PR refers to handling pull requests from version control systems like GitHub. Jenkins automates the validation of pull requests by running CI/CD pipelines, ensuring code quality, running tests, and posting results back to the PR. This helps teams catch issues early and maintain code quality. Tools like Multibranch Pipelines and GitHub Branch Source Plugin are commonly used for this purpose."*
