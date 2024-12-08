@@ -1,0 +1,19 @@
+These terms are commonly associated with the Jenkins Dashboard. Here's what they generally represent:
+
+Status: Provides an overview of the current state of builds, including success, failure, and in-progress indicators.
+
+Delete Agent: Allows you to remove a specific Jenkins agent (worker node) from the Jenkins system.
+
+Configure: Opens the configuration settings for a job, agent, or the Jenkins system itself, depending on the context.
+
+Build History: Displays a list of past builds for a specific job, including their statuses and timestamps.
+
+Load Statistics: Shows metrics about the system's load and resource usage, such as CPU or memory usage for agents and master nodes.
+
+Script Console: Provides a Groovy-based scripting environment to execute commands for Jenkins administration and troubleshooting.
+
+Log: Contains logs relevant to the Jenkins master or a specific job, agent, or system event for debugging and monitoring.
+
+System Information: Displays details about the Jenkins environment, including version, system properties, environment variables, and plugins.
+
+Disconnect: Lets you disconnect an agent temporarily from the Jenkins master node without deleting its configuration.
