@@ -1,0 +1,92 @@
+General Settings
+Discard old builds
+Automatically delete old builds to save storage.
+Example: Keep only the last 10 builds.
+
+Do not allow concurrent builds
+Prevents the pipeline from running multiple instances simultaneously.
+Example: If Build #5 is running, Build #6 will wait until it finishes.
+
+Do not allow the pipeline to resume if the controller restarts
+Stops a pipeline from continuing after a Jenkins restart.
+Example: If Jenkins crashes, the pipeline will need to be restarted manually.
+
+GitHub project
+Links the Jenkins job to a specific GitHub repository.
+Example: Add the GitHub project URL to display project details on the Jenkins job page.
+
+Pipeline speed/durability override
+Adjusts pipeline performance by balancing speed and durability of logs/checkpoints.
+Example: Use "Max performance" for fast builds or "Max durability" for high reliability.
+
+Preserve stashes from completed builds
+Keeps intermediate files (stashes) from previous builds for reuse.
+Example: Save compiled artifacts to skip recompiling in future builds.
+
+This project is parameterized
+Allows you to set input parameters for the build.
+Example: Pass a branch name (master, feature-1) as a parameter to the pipeline.
+
+Throttle builds
+Limits how often builds can run to avoid overloading.
+Example: Enforce a 5-minute gap between builds.
+
+Build Triggers
+Build after other projects are built
+Triggers this job after a dependent project finishes.
+Example: Build "Deploy" after "Build App" completes.
+
+Build periodically
+Runs the pipeline on a schedule.
+Example: Build every day at midnight (H 0 * * *).
+
+GitHub hook trigger for GITScm polling
+Automatically triggers a build when changes are pushed to the GitHub repository.
+Example: Push new code to the main branch and trigger a build instantly.
+
+Poll SCM
+Checks for code changes at regular intervals and triggers a build if there are updates.
+Example: Poll every 10 minutes (H/10 * * * *).
+
+Quiet period
+Waits for a specified time before starting a build.
+Example: Wait 2 minutes after triggering a build.
+
+Trigger builds remotely (e.g., from scripts)
+Allows external systems or scripts to trigger a build using an authentication token.
+Example: Run a script to trigger the pipeline with curl http://jenkins/job/myjob/build?token=mytoken.
+
+Advanced Project Options
+Display Name
+A custom name for the build to identify it easily.
+Example: Display "Build #123 - Feature Release" instead of just "Build #123".
+Pipeline Definition
+Pipeline script
+The main Groovy code that defines your pipeline stages and steps.
+Example:
+
+groovy
+Copy code
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+    }
+}
+Use Groovy Sandbox
+Restricts script execution to safe methods to prevent security risks.
+Example: Enabled by default for untrusted code.
+
+Pipeline Syntax
+Provides a helper tool to generate pipeline code snippets.
+Example: Use the "Pipeline Syntax" link to generate a snippet for a Git checkout step.
+
